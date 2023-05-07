@@ -1,0 +1,28 @@
+.App {
+  color: white;
+  padding: 2em;
+  font-size: var(--default-font-size);
+}
+
+.App-logo {
+  height: 4em;
+  pointer-events: none;
+  margin-inline-end: 1em;
+}
+
+.App-header {
+  display: flex;
+  align-items: center;
+}
+
+.App-link {
+  color: var(--link-dark);
+}
+
+.alpha-notice {
+  background-color: var(--alpha-notice-dark);
+  border-radius: 20px;
+  padding-inline: 20px;
+  padding-block: 5px;
+  margin-inline: 1em;
+}

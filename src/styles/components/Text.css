@@ -1,0 +1,23 @@
+* {
+  margin: 0;
+}
+
+.h1 {
+  font-size: calc(var(--default-font-size) + 3vmin);
+  font-weight: bold;
+}
+
+.h2 {
+  font-size: calc(var(--default-font-size) + 2vmin);
+  font-weight: bold;
+}
+
+.h3 {
+  font-size: calc(var(--default-font-size) + 1vmin);
+  font-weight: bold;
+}
+
+.subtitle {
+  font-size: 120%;
+  font-weight: bold;
+}

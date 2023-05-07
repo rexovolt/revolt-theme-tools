@@ -1,0 +1,21 @@
+:root {
+  --link-dark: #61dafb;
+  --background-dark: #111823;
+  --alpha-notice-dark: #b41d7b;
+  --default-font-size: 14px;
+}
+
+body {
+  background-color: var(--background-dark);
+  margin: 0;
+  font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: "JetBrains Mono", source-code-pro, Menlo, Monaco, Consolas,
+    "Courier New", monospace;
+}
