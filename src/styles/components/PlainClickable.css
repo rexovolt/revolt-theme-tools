@@ -1,0 +1,8 @@
+.plainClickable {
+  cursor: pointer;
+}
+
+.plainClickable :hover {
+  background-color: var(--background-hover-dark);
+  border-radius: 4px;
+}

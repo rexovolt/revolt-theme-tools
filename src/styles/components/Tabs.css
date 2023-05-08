@@ -1,0 +1,15 @@
+.container {
+  display: flex;
+  margin-inline-end: 2em;
+}
+
+.bar {
+  width: 0.5em;
+  background-color: white;
+  border-radius: 20px;
+  margin-inline: 1em;
+}
+
+.links > *:not(:last-child) {
+  margin-bottom: 0.5em;
+}

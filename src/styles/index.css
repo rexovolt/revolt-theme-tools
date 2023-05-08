@@ -1,6 +1,7 @@
 :root {
   --link-dark: #61dafb;
   --background-dark: #111823;
+  --background-hover-dark: #192334;
   --alpha-notice-dark: #b41d7b;
   --default-font-size: 14px;
 }
