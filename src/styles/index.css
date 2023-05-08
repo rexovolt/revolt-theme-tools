@@ -20,3 +20,7 @@ code {
   font-family: "JetBrains Mono", source-code-pro, Menlo, Monaco, Consolas,
     "Courier New", monospace;
 }
+
+a {
+  color: var(--link-dark);
+}

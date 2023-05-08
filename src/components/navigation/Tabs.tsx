@@ -9,7 +9,7 @@ export function Tabs({ activePane, setActivePane }: { activePane: string, setAct
             <div className='bar' />
             <div className='links'>
                 <PlainClickable onClick={() => { if (activePane !== 'jsonConverter') { setActivePane('jsonConverter') } }}>
-                    <Text active={activePane === 'jsonConverter'} type='h2'>sussy</Text>
+                    <Text active={activePane === 'jsonConverter'} type='h2'>Theme Converter</Text>
                 </PlainClickable>
                 <PlainClickable onClick={() => { if (activePane !== 'jsonConverter2') { setActivePane('jsonConverter2') } }}>
                     <Text active={activePane === 'jsonConverter2'} type='h2'>sussy</Text>

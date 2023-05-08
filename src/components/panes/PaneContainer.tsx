@@ -1,15 +1,22 @@
 import React from "react";
 
-import { Text } from "../atoms";
+import { JSONConverter } from "./JSONConverter";
 import { Tabs } from "../navigation/Tabs";
 import '../../styles/PaneContainer.css';
 
+type KnownPanes = 'jsonConverter' | 'jsonConverter2' | 'jsonConverter3'
+
 export function PaneContainer() {
-    const [pane, setPane] = React.useState('jsonConverter')
+    const [pane, setPane] = React.useState('jsonConverter' as KnownPanes)
+    const panes = {
+        'jsonConverter': <JSONConverter />,
+        'jsonConverter2': <JSONConverter />,
+        'jsonConverter3': <JSONConverter />,
+    }
     return (
         <div className="paneContainer">
             <Tabs activePane={pane} setActivePane={setPane} />
-            <Text type={'h1'}>{pane}</Text>
+            {panes[pane]}
         </div>
     )
 };

@@ -1,4 +1,5 @@
 .container {
+  max-width: 15em;
   display: flex;
   margin-inline-end: 2em;
 }
@@ -8,6 +9,10 @@
   background-color: white;
   border-radius: 20px;
   margin-inline: 1em;
+}
+
+.links {
+  align-self: center;
 }
 
 .links > *:not(:last-child) {
