@@ -70,7 +70,7 @@ export function JSONConverter() {
             },
         };
         setOutput(obj);
-        let toml = stringify(obj);
+        const toml = stringify(obj);
         setTOMLOutput(toml);
     };
     return (
@@ -98,7 +98,7 @@ export function JSONConverter() {
                         <TextInput value={themeAuthor} setValue={setThemeAuthor} />
                         <Text type={'h2'}>Theme version</Text>
                         <Text type={'subtitle'}>Versions are restricted to 'v' followed by numbers and dots.</Text>
-                        <TextInput value={themeVersion} setValue={setThemeVersion} />
+                        <TextInput value={themeVersion} pattern="[v0-9\.]" setValue={setThemeVersion} />
                         <Button onClick={() => convert()} enabled={themeJSON.length > 0 && themeName.length > 0 && themeSlug.length > 0 && themeAuthor.length > 0 && themeVersion.length > 0}><Text type={'h3'}>Convert & Preview</Text></Button>
                     </div>
                     <div style={{ marginInlineStart: '1em', width: '50%' }}><Text type={'h2'}>Theme data</Text>
@@ -106,7 +106,7 @@ export function JSONConverter() {
                         <ColourSwatch colour={output.variables?.accent ?? '#FFFFFF'} label="Accent" />
                         <ColourSwatch colour={output.variables?.background ?? '#FFFFFF'} label="Background" />
                         <Text type={'h3'}>TOML</Text>
-                        <Text>{TOMLOutput ?? 'none'}</Text>
+                        <code>{TOMLOutput ?? 'none'}</code>
                     </div>
                 </div>
             </div>
