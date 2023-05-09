@@ -1,5 +1,7 @@
 :root {
   --link-dark: #61dafb;
+  --button-dark: #52c8e9;
+  --disabled-button-dark: #297a91;
   --background-dark: #111823;
   --background-hover-dark: #192334;
   --alpha-notice-dark: #b41d7b;

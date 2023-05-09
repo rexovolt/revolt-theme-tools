@@ -310,6 +310,7 @@ module.exports = function (webpackEnv) {
         .map(ext => `.${ext}`)
         .filter(ext => useTypeScript || !ext.includes('ts')),
       fallback: {
+        "buffer": require.resolve("buffer"),
         "stream": require.resolve("stream-browserify")
       },
       alias: {

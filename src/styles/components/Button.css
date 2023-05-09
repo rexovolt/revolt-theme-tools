@@ -1,0 +1,16 @@
+.button,
+.disabledButton {
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: var(--button-dark);
+  border-style: none;
+  color: black;
+  padding: 0.5em;
+  width: 20em;
+  margin-block: 1em;
+}
+
+.disabledButton {
+  cursor: not-allowed;
+  background-color: var(--disabled-button-dark);
+}

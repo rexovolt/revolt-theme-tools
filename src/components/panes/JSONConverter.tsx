@@ -1,8 +1,8 @@
 import React from "react"
 
-// import { stringify } from "@iarna/toml";
+import { stringify } from "@iarna/toml";
 
-import { Divider, Text, TextInput } from "../atoms"
+import { Button, ColourSwatch, Divider, Text, TextInput } from "../atoms"
 
 export function JSONConverter() {
     const [themeJSON, setThemeJSON] = React.useState('');
@@ -10,10 +10,15 @@ export function JSONConverter() {
     const [themeSlug, setThemeSlug] = React.useState('');
     const [themeAuthor, setThemeAuthor] = React.useState('');
     const [themeVersion, setThemeVersion] = React.useState('');
-    const [output, setOutput] = React.useState({});
+    const [TOMLOutput, setTOMLOutput] = React.useState('');
+    const [output, setOutput] = React.useState({} as any);
 
     function convert() {
-        const rawObj = JSON.parse(themeJSON);
+        console.log('[JSONConverter] Running converter...')
+        let rawObj: any;
+        try { rawObj = JSON.parse(themeJSON); } catch (err) {
+            console.error(`[JSONConverter] Error parsing JSON string: ${err}, string: ${themeJSON}`)
+        }
         if (!rawObj.background || !rawObj.accent) {
             console.error(`[JSONConverter] Invalid JSON string: ${themeJSON}`)
             return;
@@ -65,9 +70,8 @@ export function JSONConverter() {
             },
         };
         setOutput(obj);
-        console.log(obj);
-        // const toml = stringify(obj);
-        // setOutput(toml);
+        let toml = stringify(obj);
+        setTOMLOutput(toml);
     };
     return (
         <>
@@ -80,7 +84,7 @@ export function JSONConverter() {
                     <Divider type="large" />
                 </>
                 <div style={{ display: 'flex' }}>
-                    <><Text type={'h2'}>Theme data</Text>
+                    <div style={{ marginInlineEnd: '1em', width: '50%' }}><Text type={'h2'}>Theme data</Text>
                         <Text type={'subtitle'}>To get this, go to Settings {'>'} Appearance, scroll down to Theme Overrides and copy the text above the colour grid.</Text>
                         <TextInput value={themeJSON} setValue={setThemeJSON} />
                         <Divider type="small" />
@@ -94,23 +98,16 @@ export function JSONConverter() {
                         <TextInput value={themeAuthor} setValue={setThemeAuthor} />
                         <Text type={'h2'}>Theme version</Text>
                         <Text type={'subtitle'}>Versions are restricted to 'v' followed by numbers and dots.</Text>
-                        <TextInput value={themeVersion} setValue={setThemeVersion} /></>
-                    <><Text type={'h2'}>Theme data</Text>
-                        <Text type={'subtitle'}>To get this, go to Settings {'>'} Appearance, scroll down to Theme Overrides and copy the text above the colour grid.</Text>
-                        <TextInput value={themeJSON} setValue={setThemeJSON} />
-                        <Divider type="small" />
-                        <Text type={'h2'}>Theme name</Text>
-                        <TextInput value={themeName} setValue={setThemeName} />
-                        <Divider type="small" />
-                        <Text type={'h2'}>Theme slug</Text>
-                        <Text type={'subtitle'}>Slugs are restricted to lowercase letters, numbers and dashes (-).</Text>
-                        <TextInput value={themeSlug} setValue={setThemeSlug} />
-                        <Text type={'h2'}>Theme author</Text>
-                        <TextInput value={themeAuthor} setValue={setThemeAuthor} />
-                        <Text type={'h2'}>Theme version</Text>
-                        <Text type={'subtitle'}>Versions are restricted to 'v' followed by numbers and dots.</Text>
-                        <TextInput value={themeVersion} setValue={setThemeVersion} /></>
-
+                        <TextInput value={themeVersion} setValue={setThemeVersion} />
+                        <Button onClick={() => convert()} enabled={themeJSON.length > 0 && themeName.length > 0 && themeSlug.length > 0 && themeAuthor.length > 0 && themeVersion.length > 0}><Text type={'h3'}>Convert & Preview</Text></Button>
+                    </div>
+                    <div style={{ marginInlineStart: '1em', width: '50%' }}><Text type={'h2'}>Theme data</Text>
+                        <Text type={'h3'}>Swatches</Text>
+                        <ColourSwatch colour={output.variables?.accent ?? '#FFFFFF'} label="Accent" />
+                        <ColourSwatch colour={output.variables?.background ?? '#FFFFFF'} label="Background" />
+                        <Text type={'h3'}>TOML</Text>
+                        <Text>{TOMLOutput ?? 'none'}</Text>
+                    </div>
                 </div>
             </div>
         </>
