@@ -12,15 +12,16 @@ export function JSONConverter() {
     const [themeVersion, setThemeVersion] = React.useState('');
     const [TOMLOutput, setTOMLOutput] = React.useState('');
     const [output, setOutput] = React.useState({} as any);
+    const [error, setError] = React.useState('');
 
     function convert() {
         console.log('[JSONConverter] Running converter...')
         let rawObj: any;
-        try { rawObj = JSON.parse(themeJSON); } catch (err) {
+        try {
+            rawObj = JSON.parse(themeJSON);
+        } catch (err) {
             console.error(`[JSONConverter] Error parsing JSON string: ${err}, string: ${themeJSON}`)
-        }
-        if (!rawObj.background || !rawObj.accent) {
-            console.error(`[JSONConverter] Invalid JSON string: ${themeJSON}`)
+            setError(`Error parsing JSON string: ${err}`);
             return;
         }
         const obj = {
@@ -84,7 +85,7 @@ export function JSONConverter() {
                     <Divider type="large" />
                 </>
                 <div style={{ display: 'flex' }}>
-                    <div style={{ marginInlineEnd: '1em', width: '50%' }}><Text type={'h2'}>Theme data</Text>
+                    <div style={{ display: 'grid', marginInlineEnd: '1em', width: '50%' }}><Text type={'h2'}>Theme data</Text>
                         <Text type={'subtitle'}>To get this, go to Settings {'>'} Appearance, scroll down to Theme Overrides and copy the text above the colour grid.</Text>
                         <TextInput value={themeJSON} setValue={setThemeJSON} />
                         <Divider type="small" />
@@ -100,6 +101,7 @@ export function JSONConverter() {
                         <Text type={'subtitle'}>Versions are restricted to 'v' followed by numbers and dots.</Text>
                         <TextInput value={themeVersion} pattern="[v0-9\.]" setValue={setThemeVersion} />
                         <Button onClick={() => convert()} enabled={themeJSON.length > 0 && themeName.length > 0 && themeSlug.length > 0 && themeAuthor.length > 0 && themeVersion.length > 0}><Text type={'h3'}>Convert & Preview</Text></Button>
+                        <Text type={'subtitle'}>{error}</Text>
                     </div>
                     <div style={{ marginInlineStart: '1em', width: '50%' }}><Text type={'h2'}>Theme data</Text>
                         <Text type={'h3'}>Swatches</Text>

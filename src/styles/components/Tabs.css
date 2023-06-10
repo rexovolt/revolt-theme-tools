@@ -1,20 +1,21 @@
 .container {
-  max-width: 15em;
+  max-height: 15em;
   display: flex;
+  flex-direction: column;
   margin-inline-end: 2em;
 }
 
 .bar {
-  width: 0.5em;
+  height: 0.25em;
   background-color: white;
   border-radius: 20px;
-  margin-inline: 1em;
+  margin-block: 1em;
 }
 
 .links {
-  align-self: center;
+  display: flex;
 }
 
 .links > *:not(:last-child) {
-  margin-bottom: 0.5em;
+  margin-inline-end: 1em;
 }

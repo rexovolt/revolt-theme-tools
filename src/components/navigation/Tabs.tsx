@@ -6,7 +6,6 @@ import '../../styles/components/Tabs.css';
 export function Tabs({ activePane, setActivePane }: { activePane: string, setActivePane: Function }) {
     return (
         <div className='container'>
-            <div className='bar' />
             <div className='links'>
                 <PlainClickable onClick={() => { if (activePane !== 'jsonConverter') { setActivePane('jsonConverter') } }}>
                     <Text active={activePane === 'jsonConverter'} type='h2'>Theme Converter</Text>
@@ -18,6 +17,7 @@ export function Tabs({ activePane, setActivePane }: { activePane: string, setAct
                     <Text active={activePane === 'jsonConverter3'} type='h2'>sussy</Text>
                 </PlainClickable>
             </div>
+            <div className='bar' />
         </div>
     )
 };
